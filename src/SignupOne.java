@@ -1,0 +1,194 @@
+
+import java.awt.*;
+import java.util.Random;
+import javax.swing.*;
+import com.toedter.calendar.JDateChooser;
+public class SignupOne extends JFrame{
+    //JtextField
+    JTextField inputName,inputFname,inputMname,inputEmail,inputAddress,inputCity,inputPincode,inputState;
+    JRadioButton male,female,other,married,Unmarried;
+    JDateChooser inputDob;
+    SignupOne(){
+        System.out.println();
+        // creatin a jpanel to just shocasing that it is signup page
+        setLayout(null);
+        setTitle("AUTOMATTED TALLER MACHINE");
+        setBackground(Color.WHITE);
+        // creating the Fx -> distance from frame, Fy, Ix , Ih
+        int Fx = 200,Fy = 30,Iw=380, Ih =30;
+        // creating a page name that show form no
+        Random random = new Random();
+        long formNo = Math.abs(random.nextLong()%10000 + 1234L);
+        JLabel form = new JLabel("APPLICATION FORM NO : "+formNo);
+        form.setFont(new Font("Sen-serif",Font.BOLD,24));
+        form.setBounds(Fx,Fy,Iw,Ih);
+        add(form);
+
+        // persional details
+        JLabel persional = new JLabel("Page 1 : Persional Details");
+        persional.setFont(new Font("Raleway",Font.CENTER_BASELINE,22));
+        persional.setBounds(Fx+30,Fy+30,Iw,Ih);
+        add(persional);
+        // setting the font for the below attricute
+        Fx = 100;
+        Fy = 150;
+        Iw = 300;
+        int IFx = 300;
+        Font font = new Font("Raleway",Font.CENTER_BASELINE,20);
+
+        // NAME OF PERSON
+        JLabel name = new JLabel("Name: ");
+        name.setFont(font);
+        name.setBounds(Fx,Fy,Iw,Ih);
+        add(name);
+        inputName = new JTextField();
+        inputName.setFont(font);
+        inputName.setBounds(IFx,Fy,Iw,Ih);
+        add(inputName);
+
+        // Father name
+        Fy +=50;
+        JLabel fname = new JLabel("Father's Name: ");
+        fname.setFont(font);
+        fname.setBounds(Fx,Fy,Iw,Ih);
+        add(fname);
+        inputFname = new JTextField();
+        inputFname.setFont(font);
+        inputFname.setBounds(IFx,Fy,Iw,Ih);
+        add(inputFname);
+
+        // Mother name
+        Fy +=50;
+        JLabel mname = new JLabel("Mother's Name: ");
+        mname.setFont(font);
+        mname.setBounds(Fx,Fy,Iw,Ih);
+        add(mname);
+        inputMname = new JTextField();
+        inputMname.setFont(font);
+        inputMname.setBounds(IFx,Fy,Iw,Ih);
+        add(inputMname);
+
+        // Date of Birth 
+        Fy +=50;
+        JLabel dob = new JLabel("Date of Birth: ");
+        dob.setFont(font);
+        dob.setBounds(Fx,Fy,Iw,Ih);
+        add(dob);
+        inputDob = new JDateChooser();
+        inputDob.setFont(font);
+        inputDob.setBounds(IFx,Fy,Iw,Ih);
+        add(inputDob);
+
+        // Gender 
+        Fy +=50;
+        JLabel gender = new JLabel("Gender: ");
+        gender.setFont(font);
+        gender.setBounds(Fx,Fy,Iw,Ih);
+        add(gender);
+        male = new JRadioButton("Male");
+        female = new JRadioButton("Female");
+        other = new JRadioButton("Other");
+        male.setFont(font);
+        male.setBounds(IFx,Fy,100,Ih);
+        female.setFont(font);
+        female.setBounds(IFx+100,Fy,100,Ih);
+        other.setFont(font);
+        other.setBounds(IFx+200,Fy,100,Ih);
+        add(male);
+        add(female);
+        add(other);
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(male);
+        genderGroup.add(female);
+        genderGroup.add(other);
+        // Email Address 
+        Fy +=50;
+        JLabel email = new JLabel("Email Address: ");
+        email.setFont(font);
+        email.setBounds(Fx,Fy,Iw,Ih);
+        add(email);
+        inputEmail = new JTextField();
+        inputEmail.setFont(font);
+        inputEmail.setBounds(IFx,Fy,Iw,Ih);
+        add(inputEmail);
+
+        // Merital status 
+        Fy +=50;
+        JLabel mstatus = new JLabel("Merital Status: ");
+        mstatus.setFont(font);
+        mstatus.setBounds(Fx,Fy,Iw,Ih);
+        add(mstatus);
+        married = new JRadioButton("Married");
+        Unmarried = new JRadioButton("UnMarried");
+        married.setFont(font);
+        married.setBounds(IFx,Fy,150,Ih);
+        Unmarried.setFont(font);
+        Unmarried.setBounds(IFx+150,Fy,150,Ih);
+        add(married);
+        add(Unmarried);
+        ButtonGroup marrageStatus = new ButtonGroup();
+        marrageStatus.add(married);
+        marrageStatus.add(Unmarried);
+        // Address of the user 
+        Fy +=50;
+        JLabel address = new JLabel("Address: ");
+        address.setFont(font);
+        address.setBounds(Fx,Fy,Iw,Ih);
+        add(address);
+        inputAddress = new JTextField();
+        inputAddress.setFont(font);
+        inputAddress.setBounds(IFx,Fy,Iw,Ih);
+        add(inputAddress);
+
+        // City name 
+        Fy +=50;
+        JLabel city = new JLabel("City: ");
+        city.setFont(font);
+        city.setBounds(Fx,Fy,Iw,Ih);
+        add(city);
+        inputCity = new JTextField();
+        inputCity.setFont(font);
+        inputCity.setBounds(IFx,Fy,Iw,Ih);
+        add(inputCity);
+
+        // State name 
+        Fy +=50;
+        JLabel state = new JLabel("State: ");
+        state.setFont(font);
+        state.setBounds(Fx,Fy,Iw,Ih);
+        add(state);
+        inputState = new JTextField();
+        inputState.setFont(font);
+        inputState.setBounds(IFx,Fy,Iw,Ih);
+        add(inputState);
+
+        // Pincode name 
+        Fy +=50;
+        JLabel pincode = new JLabel("Pin Code: ");
+        pincode.setFont(font);
+        pincode.setBounds(Fx,Fy,Iw,Ih);
+        add(pincode);
+        inputPincode = new JTextField();
+        inputPincode.setFont(font);
+        inputPincode.setBounds(IFx,Fy,Iw,Ih);
+        add(inputPincode);
+
+        // adding the NEXT BUTTON
+        Fy +=50;
+        JButton btnNext = new JButton("NEXT");
+        btnNext.setFont(font);
+        btnNext.setBounds(IFx+200,Fy,100,50);
+        btnNext.setBackground(Color.BLACK);
+        btnNext.setForeground(Color.WHITE);
+        add(btnNext);
+
+        setSize(750,830);
+        setLocation(550, 20);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+        setResizable(false);
+    }
+    public static void main(String[] args){
+        new SignupOne();
+    }
+}
