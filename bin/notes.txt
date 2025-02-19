@@ -1,0 +1,56 @@
+// HOW TO MAKE THE PACKAGE IN JAVA
+STEPS 
+    1. make a directory example in BANK-MANAGEMENT-SYSTEM
+        BANK -> file.java
+        inside the file.java add 
+            package bank;
+             //code of the file.java 
+    2. compile the program
+        javac file.java -> from BANK folder
+        javac bank/file.java -> at BANK-MANAGEMENT-SYSTEM      
+    3.RUN the code
+        java bank.file_name    -> from the BANK-MANAGEMENt-SYSTEM
+
+// CREATING A LAYOUT
+    1. import java.swing.*;
+    2. extends the class
+    ex : public class Login extends JFrame
+                simple operation
+    3. wihtout extends
+
+        JFrame frame = new JFrame("First frame");
+        frame.setTitle("This is the Title of the Panel");
+        frame.setSize(1000,500);
+        frame.setLocation(200,300); // here the panel will be poped up
+        frame.setVisible(true); // this will sho u the frame
+// CREATE BACKGROUND_IMAGE
+    
+    ImageIcon imgIcon = new ImageIcon(getClass().getResources("filepath.extension"));
+
+    //convert the image icon to the image and set the hwight width and scale
+    Image img = imgIcon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
+
+    // again convert it to ImageIcon
+    imgIcon = new ImageIcon(img);
+    JLabel label = new JLabel(imgIcon);
+
+    // this will set the position and height and widthh of the iamge to the JFrame
+    label.setBounds(70,10,100,100);
+
+    // adding it to the JFrame
+    frame.add(label);
+
+    //setting the default layout to null , so that we can change the position of the label
+    frame.setLayout(null);
+    
+//CONNECTING THE JAVA FILE TO THE MYSQL DATABASE
+1. Register the Driver
+
+2. Create Connection
+
+
+3. Create Statement
+
+4. Execute Query
+
+5. Close connection
