@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import java.awt.event.*;
+import java.net.URL;
 import javax.swing.*;
 
 class Login extends JFrame implements ActionListener {
@@ -20,11 +21,16 @@ class Login extends JFrame implements ActionListener {
         // Preventing the default laout
         setLayout(null);
         // ADDING THE BACKGROUND IMAGE
-        ImageIcon imgIcon = new ImageIcon(getClass().getResource("../images/bin/logo.jpg"));
-        if(imgIcon == null){
-            System.out.println("that image not found! Check the path again");
+        URL imgIconUrl = getClass().getResource("./images/logo.jpg");
+        ImageIcon imgIcon;
+        Image img ;
+        if(imgIconUrl != null){
+            imgIcon = new ImageIcon(imgIconUrl);
+            img = imgIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        }else{
+            System.out.println("Image is not found");
+            return ;
         }
-        Image img = imgIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         imgIcon = new ImageIcon(img);
         JLabel label = new JLabel(imgIcon);
         label.setBounds(70, 10, 100, 100);
