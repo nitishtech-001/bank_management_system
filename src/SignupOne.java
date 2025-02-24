@@ -18,10 +18,9 @@ public class SignupOne extends JFrame implements ActionListener {
     JButton btnNext;
 
     SignupOne() {
-        System.out.println();
         // creatin a jpanel to just shocasing that it is signup page
         setLayout(null);
-        setTitle("AUTOMATTED TALLER MACHINE");
+        setTitle("NEW APPLICATION FORM PAGE 1");
         setBackground(Color.WHITE);
         // creating the Fx -> distance from frame, Fy, Ix , Ih
         int Fx = 200, Fy = 30, Iw = 380, Ih = 30;
@@ -186,7 +185,7 @@ public class SignupOne extends JFrame implements ActionListener {
         Fy += 50;
         btnNext = new JButton("NEXT");
         btnNext.setFont(font);
-        btnNext.setBounds(IFx + 200, Fy, 100, 50);
+        btnNext.setBounds(IFx + 200, Fy, 100, 40);
         btnNext.setBackground(Color.BLACK);
         btnNext.setForeground(Color.WHITE);
         add(btnNext);
@@ -229,41 +228,57 @@ public class SignupOne extends JFrame implements ActionListener {
         String city = inputCity.getText();
         String state = inputState.getText();
         int pin = 1000;
-        if (inputPincode.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Pin code is required!");
-        } else if (inputPincode.getText().length() < 3 || Integer.parseInt(inputPincode.getText()) < 1000) {
-            JOptionPane.showMessageDialog(null, "Pin code must 4 digit and above 1000!");
-        } else {
-            pin = Integer.parseInt(inputPincode.getText());
-        }
         try {
             if (name.equals("")) {
                 JOptionPane.showMessageDialog(null, "Name is required!");
+                return;
             } else if (fname.equals("")) {
                 JOptionPane.showMessageDialog(null, "Father's name is required!");
+                return;
             } else if (mname.equals("")) {
                 JOptionPane.showMessageDialog(null, "Mother's name is required!");
+                return;
             } else if (dob.equals("")) {
                 JOptionPane.showMessageDialog(null, "Date of Birth is required!");
+                return;
             } else if (gender.equals("")) {
                 JOptionPane.showMessageDialog(null, "Gender is required!");
+                return;
             } else if (marital.equals("")) {
                 JOptionPane.showMessageDialog(null, "Marital status is required!");
+                return;
             } else if (address.equals("")) {
                 JOptionPane.showMessageDialog(null, "Address is required!");
+                return;
             } else if (city.equals("")) {
                 JOptionPane.showMessageDialog(null, "City is required!");
+                return;
             } else if (state.equals("")) {
                 JOptionPane.showMessageDialog(null, "State is required!");
-            } else {
-                Connect c = new Connect();
-                String query = "INSERT INTO signup VALUES ('" + formNumber + "','" + name + "','" + fname + "','"+ mname + "','" + dob + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city+ "','" + state + "','" + pin + "')";
-
-                c.s.executeUpdate(query);
-                System.out.println("Data addedd to signup Successfully!!!1");
+                return;
             }
+            if (inputPincode.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Pin code is required!");
+                return;
+            } else if (inputPincode.getText().length() < 3 || Integer.parseInt(inputPincode.getText()) < 1000) {
+                JOptionPane.showMessageDialog(null, "Pin code must 4 digit and above 1000!");
+                return;
+            }
+            pin = Integer.parseInt(inputPincode.getText());
+            Connect c = new Connect();
+            String query = "INSERT INTO signup VALUES ('" + formNumber + "','" + name + "','" + fname + "','" + mname
+                    + "','" + dob + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city
+                    + "','" + state + "','" + pin + "')";
 
-        } catch (Exception err) {
+            c.s.executeUpdate(query);
+            System.out.println("Data Addedd To SIGNUP Table Successfully !!!");
+
+            new SignupTwo(formNumber);
+            dispose();
+
+        } catch (
+
+        Exception err) {
             System.out.println(err);
         }
     }

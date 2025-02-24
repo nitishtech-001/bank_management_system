@@ -12,8 +12,7 @@ class Login extends JFrame implements ActionListener {
     JTextField inputCardNo;
     JPasswordField inputPin;
 
-    Login(String value) {
-        System.out.println("Calling the contructor " + value);
+    Login() {
         // Creating a JFrame instanc
         // Set size of the frame (width, height)
         setTitle("AUTOMATED TELLER MACHINE");
@@ -90,12 +89,21 @@ class Login extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Login("check that RUN or NOT");
+        new Login();
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand() == "LOGIN"){
+            if(inputCardNo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Enter the Card Number!");
+                return ;
+            }else if(String.valueOf(inputPin.getPassword()).isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ente the password!");
+                return ;
+            }
+        }
         switch (e.getActionCommand()) {
             case "SIGNUP" -> {
                 System.out.println("Clicked on SIGNUP BUTTON");
