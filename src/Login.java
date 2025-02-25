@@ -85,6 +85,7 @@ class Login extends JFrame implements ActionListener {
         setLocation(350, 200);
         // set default close operation (exit the application when window is closed)
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
         setVisible(true);
     }
 

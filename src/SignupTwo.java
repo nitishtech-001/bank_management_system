@@ -19,7 +19,7 @@ public class SignupTwo extends JFrame implements ActionListener{
         int Fx = 200, Fy = 70, Iw = 380, Ih = 30;
         // Header Additional information
         JLabel title = new JLabel("Page 2: Additional Information");
-        title.setFont(new Font("Raleway", Font.CENTER_BASELINE, 22));
+        title.setFont(new Font("Raleway", Font.BOLD, 22));
         title.setBounds(Fx, Fy, Iw, Ih);
         add(title);
 
@@ -162,7 +162,7 @@ public class SignupTwo extends JFrame implements ActionListener{
 
         //adding the submit btn
         Fy+=50;
-        JButton btnSubmit = new JButton("SUBMIT");
+        JButton btnSubmit = new JButton("NEXT");
         btnSubmit.setFont(font);
         btnSubmit.setBounds(IFx+150,Fy,150,40);
         btnSubmit.setBackground(Color.BLACK);
@@ -223,7 +223,7 @@ public class SignupTwo extends JFrame implements ActionListener{
             Connect c = new Connect();
             c.s.executeUpdate(query);
             System.out.println("Data Added To SIGNUPTWO Table Successfully !!");
-            new App();
+            new SignupThree(formNo);
             dispose();
         } catch (Exception error) {
             System.out.print(error);
