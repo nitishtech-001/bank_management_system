@@ -10,7 +10,7 @@ class Login extends JFrame implements ActionListener {
 
     // DECLARING THE BUTTONS
     JButton btnLogin, btnSignup, btnClear;
-    //DECLARING TEXTFIELD
+    // DECLARING TEXTFIELD
     JTextField inputCardNo;
     JPasswordField inputPin;
 
@@ -24,13 +24,13 @@ class Login extends JFrame implements ActionListener {
         // ADDING THE BACKGROUND IMAGE
         URL imgIconUrl = getClass().getResource("./images/logo.jpg");
         ImageIcon imgIcon;
-        Image img ;
-        if(imgIconUrl != null){
+        Image img;
+        if (imgIconUrl != null) {
             imgIcon = new ImageIcon(imgIconUrl);
             img = imgIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-        }else{
+        } else {
             System.out.println("Image is not found");
-            return ;
+            return;
         }
         imgIcon = new ImageIcon(img);
         JLabel label = new JLabel(imgIcon);
@@ -64,7 +64,7 @@ class Login extends JFrame implements ActionListener {
         inputPin.setBounds(200, 210, 300, 40);
         add(inputPin);
 
-        // CREATING THREE BUTTON 
+        // CREATING THREE BUTTON
         // SIGNUP BUTTON
         btnSignup = new JButton("SIGNUP");
         btnSignup.setFont(new Font("Raieway", Font.CENTER_BASELINE, 20));
@@ -85,6 +85,10 @@ class Login extends JFrame implements ActionListener {
         add(btnLogin);
         setSize(700, 600);
         setLocation(350, 200);
+        // setting the button focus to false
+        btnClear.setFocusPainted(false);
+        btnLogin.setFocusPainted(false);
+        btnSignup.setFocusPainted(false);
         // set default close operation (exit the application when window is closed)
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -98,7 +102,7 @@ class Login extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand() == "LOGIN"){
+        if(e.getSource() == btnLogin){
             if(inputCardNo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "Enter the Card Number!");
                 return ;
@@ -125,15 +129,13 @@ class Login extends JFrame implements ActionListener {
                 System.out.println(error);;
             }
         }
-        switch (e.getActionCommand()) {
-            case "SIGNUP" -> {
+        else if(e.getSource() == btnSignup) {
                 new SignupOne();
                 dispose();
-            }
-            case "CLEAR" -> {
-                inputCardNo.setText("");
-                inputPin.setText("");
-            }
+        }else{
+            inputCardNo.setText("");
+            inputPin.setText("");
         }
+            
     }
 }

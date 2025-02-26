@@ -169,7 +169,7 @@ public class SignupTwo extends JFrame implements ActionListener{
         btnSubmit.setForeground(Color.WHITE);
         add(btnSubmit);
         btnSubmit.addActionListener(this);
-
+        btnSubmit.setFocusPainted(false);
 
 
         setSize(750, 830);

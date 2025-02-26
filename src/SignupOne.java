@@ -190,7 +190,7 @@ public class SignupOne extends JFrame implements ActionListener {
         btnNext.setForeground(Color.WHITE);
         add(btnNext);
         btnNext.addActionListener(this);
-
+        btnNext.setFocusPainted(false);
         setSize(750, 830);
         setLocation(550, 20);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -10,6 +10,7 @@ public class SignupThree extends JFrame implements ActionListener {
     JRadioButton btnSavingAc, btnFixedAc, btnCurrentAc, btnRecuringAc;
     JCheckBox checkAtmCard, checkInternetBank, checkMobileBank, checkChequeBook, checkAlert, checkEStatement,
             checkStatement, checkPrivacyPolicy;
+    JButton btnCancel,btnSubmit;
     int formNo;
 
     SignupThree(int formNo) {
@@ -176,14 +177,14 @@ public class SignupThree extends JFrame implements ActionListener {
 
         // creating button
         Fy += 140;
-        Button btnCancel = new Button("CANCEL");
+        btnCancel = new JButton("CANCEL");
         btnCancel.setFont(new Font("Raleway", Font.BOLD, 20));
         btnCancel.setBounds(Fx + 200, Fy, 150, 40);
         btnCancel.setBackground(Color.BLACK);
         btnCancel.setForeground(Color.WHITE);
         add(btnCancel);
 
-        Button btnSubmit = new Button("SUBMIT");
+        btnSubmit = new JButton("SUBMIT");
         btnSubmit.setFont(new Font("Raleway", Font.BOLD, 20));
         btnSubmit.setBounds(Fx + 370, Fy, 150, 40);
         btnSubmit.setBackground(Color.BLACK);
@@ -192,6 +193,9 @@ public class SignupThree extends JFrame implements ActionListener {
 
         btnCancel.addActionListener(this);
         btnSubmit.addActionListener(this);
+        //setting the focus painted to false
+        btnCancel.setFocusPainted(false);
+        btnSubmit.setFocusPainted(false);
         setSize(750, 830);
         setLocation(550, 20);
         setVisible(true);
@@ -205,10 +209,10 @@ public class SignupThree extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        if (event.getActionCommand() == "CANCEL") {
+        if (event.getSource() == btnCancel) {
             dispose();
             return;
-        } else if (event.getActionCommand() == "SUBMIT") {
+        } else if (event.getSource() == btnSubmit) {
             String strAccountType;
             // checking that Account type is selected or not
             if (btnSavingAc.isSelected()) {
