@@ -2,6 +2,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.net.URL;
+import java.sql.ResultSet;
+
 import javax.swing.*;
 
 class Login extends JFrame implements ActionListener {
@@ -104,22 +106,34 @@ class Login extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Ente the password!");
                 return ;
             }
+            // try to login with credentials
+            try{
+                String cardNo = inputCardNo.getText();
+                String pin = String.valueOf(inputPin.getPassword());
+                String queryLogin = "SELECT form_no FROM login WHERE card_no ='"+cardNo+"' AND pin ='"+pin+"' ";
+                Connect c = new Connect();
+                ResultSet result = c.s.executeQuery(queryLogin);
+                if(result.next()){
+                    JOptionPane.showMessageDialog(null, "Login Succesfull! \n"+"Form number: "+result.getInt("form_no"));
+                    new Transaction(cardNo,pin);
+                    dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Wrong Credentials !!");
+                }
+                result.close();
+            }catch(Exception error){
+                System.out.println(error);;
+            }
         }
         switch (e.getActionCommand()) {
             case "SIGNUP" -> {
-                System.out.println("Clicked on SIGNUP BUTTON");
                 new SignupOne();
                 dispose();
-                // setVisible(false);
             }
             case "CLEAR" -> {
-                System.out.println("Clicked on CLEAR BUTTON");
-                System.out.println(inputCardNo.getText());
                 inputCardNo.setText("");
                 inputPin.setText("");
             }
-            default ->
-                System.out.println("Clicked on LOGIN BTN BUTTON");
         }
     }
 }

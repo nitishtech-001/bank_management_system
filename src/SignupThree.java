@@ -262,17 +262,17 @@ public class SignupThree extends JFrame implements ActionListener {
             String strCardNo = "" + Math.abs(random.nextLong() % 900000000L + 4771100000000000L);
 
             String strPinNo = "" + Math.abs(random.nextLong() % 990000L + 187000L);
-            System.out.println(strPinNo);
-            System.out.println(strCardNo);
             try {
-                System.out.println(strServiceReq);
-                System.out.println(strServiceReq.length());
                 // Query to insert in the database
                 String query = "INSERT INTO signupthree VALUES ('" + formNo + "','" + strAccountType + "','" + strCardNo
                         + "','" + strPinNo + "','" + strServiceReq + "')";
                 Connect c = new Connect();
                 c.s.executeUpdate(query);
+                // Query to add the login creadential to the Login table
+                String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"')";
                 System.out.println("Data Saved In SIGNUPTHREE Table Succesfully!!");
+                c.s.executeUpdate(loginQuery);
+                System.out.println("Login Credential Saved To LOGIN Table Succesfully!!");
                 JOptionPane.showMessageDialog(null, "Your Card Number: " + strCardNo + "\n" + "PIN Code: " + strPinNo);
                 new Login();
                 dispose();
