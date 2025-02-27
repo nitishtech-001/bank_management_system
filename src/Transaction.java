@@ -148,6 +148,9 @@ public class Transaction extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnExit) {
             dispose();
+        }else if(e.getSource() == btnDeposite){
+            new Deposit(cardNo,pin);
+            dispose();
         }
     }
 }

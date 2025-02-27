@@ -210,6 +210,7 @@ public class SignupThree extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnCancel) {
+            new Login();
             dispose();
             return;
         } else if (event.getSource() == btnSubmit) {
@@ -278,7 +279,7 @@ public class SignupThree extends JFrame implements ActionListener {
                 c.s.executeUpdate(loginQuery);
                 System.out.println("Login Credential Saved To LOGIN Table Succesfully!!");
                 JOptionPane.showMessageDialog(null, "Your Card Number: " + strCardNo + "\n" + "PIN Code: " + strPinNo);
-                new Login();
+                new Deposit(strCardNo,strPinNo);
                 dispose();
             } catch (Exception error) {
                 System.out.println(error);
