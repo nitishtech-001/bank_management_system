@@ -141,7 +141,7 @@ public class Transaction extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-
+        new Transaction("4771099438570503", "178919");
     }
 
     @Override
@@ -150,6 +150,12 @@ public class Transaction extends JFrame implements ActionListener {
             dispose();
         }else if(e.getSource() == btnDeposite){
             new Deposit(cardNo,pin);
+            dispose();
+        }else if(e.getSource() == btnWithdraw){
+            new Withdraw(cardNo, pin);
+            dispose();
+        }else if(e.getSource() == btnFastcash){
+            new FastCash(cardNo, pin);
             dispose();
         }
     }

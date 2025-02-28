@@ -204,7 +204,7 @@ public class SignupThree extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SignupThree(1962);
+        new SignupThree(1966);
     }
 
     @Override
@@ -234,19 +234,19 @@ public class SignupThree extends JFrame implements ActionListener {
                 strServiceReq = strServiceReq + "ATM Card";
             }
             if (checkInternetBank.isSelected()) {
-                strServiceReq = strServiceReq + "Internet Banking";
+                strServiceReq = strServiceReq + ", Internet Banking";
             }
             if (checkMobileBank.isSelected()) {
-                strServiceReq = strServiceReq + "Mobile Banking";
+                strServiceReq = strServiceReq + ", Mobile Banking";
             }
             if (checkChequeBook.isSelected()) {
-                strServiceReq = strServiceReq + "Cheque Book";
+                strServiceReq = strServiceReq + ", Cheque Book";
             }
             if (checkAlert.isSelected()) {
-                strServiceReq = strServiceReq + "SMS & EMAIL Alerts";
+                strServiceReq = strServiceReq + ", SMS & EMAIL Alerts";
             }
             if (checkEStatement.isSelected()) {
-                strServiceReq = strServiceReq + "E-Statement";
+                strServiceReq = strServiceReq + ", E-Statement";
             }
             if (strServiceReq.length() < 3) {
                 JOptionPane.showMessageDialog(null, "Please Select Atleast One Service!");
@@ -266,7 +266,7 @@ public class SignupThree extends JFrame implements ActionListener {
             Random random = new Random();
             String strCardNo = "" + Math.abs(random.nextLong() % 900000000L + 4771100000000000L);
 
-            String strPinNo = "" + Math.abs(random.nextLong() % 990000L + 187000L);
+            String strPinNo = "" + Math.abs((random.nextLong() % 990000L + 187000L)%1000000L);
             try {
                 // Query to insert in the database
                 String query = "INSERT INTO signupthree VALUES ('" + formNo + "','" + strAccountType + "','" + strCardNo
@@ -274,7 +274,7 @@ public class SignupThree extends JFrame implements ActionListener {
                 Connect c = new Connect();
                 c.s.executeUpdate(query);
                 // Query to add the login creadential to the Login table
-                String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"')";
+                String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"','0')";
                 System.out.println("Data Saved In SIGNUPTHREE Table Succesfully!!");
                 c.s.executeUpdate(loginQuery);
                 System.out.println("Login Credential Saved To LOGIN Table Succesfully!!");

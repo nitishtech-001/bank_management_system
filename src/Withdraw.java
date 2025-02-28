@@ -6,12 +6,12 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Deposit extends JFrame implements ActionListener {
+public class Withdraw extends JFrame implements ActionListener {
     JTextField inputDeposit, inputPin;
     JButton btnDeposit, btnBack;
     String pin,cardNo;
 
-    Deposit(String cardNo,String pin) {
+    Withdraw(String cardNo,String pin) {
         this.cardNo = cardNo;
         this.pin = pin;
         setLayout(null);
@@ -25,7 +25,7 @@ public class Deposit extends JFrame implements ActionListener {
             imgIcon = new ImageIcon(imgIconUrl);
             img = imgIcon.getImage().getScaledInstance(750, 760, Image.SCALE_DEFAULT);
         } else {
-            System.out.println("Image is not found");
+            System.out.println("Image is not found!");
             return;
         }
         imgIcon = new ImageIcon(img);
@@ -34,19 +34,18 @@ public class Deposit extends JFrame implements ActionListener {
         add(labelImage);
 
         // header
-        JLabel title = new JLabel("DEPOSIT INTERFACE");
+        JLabel title = new JLabel("WITHDRAWL INTERFACE");
         title.setFont(new Font("Raleway", Font.BOLD, 24));
-        title.setBounds(240, 6, 270, 20);
+        title.setBounds(210, 6, 300, 20);
         title.setForeground(Color.GREEN);
         labelImage.add(title);
 
-        // Text for ask amount to Deposit
-        JLabel amount = new JLabel("Enter Amount To Deposit...");
+        // Text for ask amount to Withdraw
+        JLabel amount = new JLabel("Enter Amount To Withdraw...");
         amount.setFont(new Font("System", Font.ITALIC, 18));
         amount.setBounds(170, 325, 250, 20);
         amount.setForeground(Color.WHITE);
         labelImage.add(amount);
-
         // text field for the amount input
         JLabel textAmount = new JLabel("Amount:");
         textAmount.setFont(new Font("Raleway", Font.BOLD, 16));
@@ -71,8 +70,8 @@ public class Deposit extends JFrame implements ActionListener {
         inputPin.setBounds(240, 420, 180, 22);
         labelImage.add(inputPin);
 
-        // btn Deposit
-        btnDeposit = new JButton("Deposit");
+        // btn Withdraw
+        btnDeposit = new JButton("Withdraw");
         btnDeposit.setFont(new Font("System", Font.BOLD, 18));
         btnDeposit.setBounds(290, 480, 130, 28);
         btnDeposit.setForeground(Color.GREEN);
@@ -103,15 +102,15 @@ public class Deposit extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Deposit("235689797","1234");
+        new Withdraw("235689797","1234");
     }
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnDeposit) {
             String strAmount = inputDeposit.getText();
             String strPin = inputPin.getText();
-            if(strAmount.isEmpty() || Long.parseLong(strAmount) < 50){
-                JOptionPane.showMessageDialog(null, "Enter The Valid Amount!");
+            if(strAmount.isEmpty() || Long.parseLong(strAmount) < 100){
+                JOptionPane.showMessageDialog(null, "Enter The Valid Amount!, Amount sholud be more than 100!");
                 return;
             }else if(strPin.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Enter The Pin Number!");
@@ -120,28 +119,26 @@ public class Deposit extends JFrame implements ActionListener {
                 Date date = new Date(System.currentTimeMillis());
                 try{
                     Connect c = new Connect();
-                    String queryPrevBal  = "SELECT balance FROM login WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"' ";
-                    ResultSet balance = c.s.executeQuery(queryPrevBal);
+                    String queryCheckBalance = "SELECT balance FROM login WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"'";
+                    ResultSet balance = c.s.executeQuery(queryCheckBalance);
                     if(balance.next()){
-                        //inserting into the BANK Table
                         String strBalance = balance.getString("balance");
-                        //updating the existing balance to the new 
-                        strBalance = ""+(Long.parseLong(strBalance)+Long.parseLong(strAmount));
-                        String query = "INSERT INTO bank VALUES ('"+cardNo+"','Deposit','"+strAmount+"','"+date+"' )";
+                        if(Long.parseLong(strBalance) < Long.parseLong(strAmount)-99){
+                            JOptionPane.showMessageDialog(null, "Insufficient Balance!");
+                            return;
+                        }
+                        strBalance =""+(Long.parseLong(strBalance)-Long.parseLong(strAmount));
+                        String query = "INSERT INTO bank VALUES ('"+cardNo+"','Withdraw','"+strAmount+"','"+date+"' )";
                         c.s.executeUpdate(query);
-
                         String queryUpdateBal = "UPDATE login SET balance = '"+strBalance+"' WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"'";
                         c.s.executeUpdate(queryUpdateBal);
-                        JOptionPane.showMessageDialog(null, "Deposited "+strAmount+" To Your Account Succesfully!");
+                        JOptionPane.showMessageDialog(null, "Withdraw Rs."+strAmount+" From Your Account Succesfully!");
                         new Transaction(cardNo, pin);
                         dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Something went wrong!");
-                        return ;
                     }
                 }catch(Exception error){
                     System.out.println(error);
-                }       
+                }    
             }else{
                 JOptionPane.showMessageDialog(null, "Pin is incorrect!");
             }
@@ -151,3 +148,4 @@ public class Deposit extends JFrame implements ActionListener {
         }
     }
 }
+
