@@ -9,7 +9,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Withdraw extends JFrame implements ActionListener {
-    JTextField inputDeposit, inputPin;
+    JTextField inputDeposit;
+    JPasswordField inputPin;
     JButton btnDeposit, btnBack;
     String pin,cardNo;
 
@@ -67,7 +68,7 @@ public class Withdraw extends JFrame implements ActionListener {
         textPin.setBounds(170, 420, 120, 22);
         labelImage.add(textPin);
 
-        inputPin = new JTextField();
+        inputPin = new JPasswordField();
         inputPin.setFont(new Font("System", Font.CENTER_BASELINE, 18));
         inputPin.setBounds(240, 420, 180, 22);
         labelImage.add(inputPin);
@@ -110,7 +111,7 @@ public class Withdraw extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnDeposit) {
             String strAmount = inputDeposit.getText();
-            String strPin = inputPin.getText();
+            String strPin = String.valueOf(inputPin.getPassword());
             if(strAmount.isEmpty() || Long.parseLong(strAmount) < 100){
                 JOptionPane.showMessageDialog(null, "Enter The Valid Amount!, Amount sholud be more than 100!");
                 return;

@@ -9,7 +9,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class Donation extends JFrame implements ActionListener {
-    JTextField inputPin;
+    JPasswordField inputPin;
     JButton btnRs50, btnRs100, btnRs200, btnRs250, btnRs500, btnRs750, btnRs1000, btnBack;
     String pin, cardNo;
 
@@ -56,7 +56,7 @@ public class Donation extends JFrame implements ActionListener {
         textPin.setBounds(170, 380, 120, 22);
         labelImage.add(textPin);
 
-        inputPin = new JTextField();
+        inputPin = new JPasswordField();
         inputPin.setFont(new Font("System", Font.CENTER_BASELINE, 18));
         inputPin.setBounds(240, 380, 180, 22);
         labelImage.add(inputPin);
@@ -175,7 +175,7 @@ public class Donation extends JFrame implements ActionListener {
             new Transaction(cardNo, pin);
             return ;
         }
-        String strPin = inputPin.getText();
+        String strPin = String.valueOf(inputPin.getPassword());
         if (strPin.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter The Pin First!");
             return;
