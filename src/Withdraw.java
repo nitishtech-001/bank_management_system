@@ -3,6 +3,8 @@ import java.awt.*;
 import java.net.URL;
 // import java.sql.Date;
 import java.sql.*;
+import java.time.LocalTime;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -123,18 +125,20 @@ public class Withdraw extends JFrame implements ActionListener {
                     ResultSet balance = c.s.executeQuery(queryCheckBalance);
                     if(balance.next()){
                         String strBalance = balance.getString("balance");
-                        if(Long.parseLong(strBalance) < Long.parseLong(strAmount)-99){
+                        if(Long.parseLong(strBalance) < Long.parseLong(strAmount)+100){ // used strAmount +100 for minimum balance
                             JOptionPane.showMessageDialog(null, "Insufficient Balance!");
                             return;
                         }
                         strBalance =""+(Long.parseLong(strBalance)-Long.parseLong(strAmount));
-                        String query = "INSERT INTO bank VALUES ('"+cardNo+"','Withdraw','"+strAmount+"','"+date+"' )";
+                        LocalTime localTime = LocalTime.now();
+                        String time = (""+localTime).substring(0,8);
+                        String query = "INSERT INTO transaction VALUES ('"+cardNo+"','Withdraw','"+strAmount+"','"+date+"','"+time+"' )";
                         c.s.executeUpdate(query);
                         String queryUpdateBal = "UPDATE login SET balance = '"+strBalance+"' WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"'";
                         c.s.executeUpdate(queryUpdateBal);
                         JOptionPane.showMessageDialog(null, "Withdraw Rs."+strAmount+" From Your Account Succesfully!");
-                        new Transaction(cardNo, pin);
                         dispose();
+                        new Transaction(cardNo, pin);
                     }
                 }catch(Exception error){
                     System.out.println(error);
@@ -143,8 +147,8 @@ public class Withdraw extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Pin is incorrect!");
             }
         } else {
-            new Transaction(cardNo, pin);
             dispose();
+            new Transaction(cardNo, pin);
         }
     }
 }

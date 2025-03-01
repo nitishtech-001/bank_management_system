@@ -9,8 +9,10 @@ public class SignupTwo extends JFrame implements ActionListener{
     JComboBox<String> selectReligion,selectCategory,selectEducation,selectIncome,selectOccupation;
     JRadioButton seniorCitizenYes,seniorCitizenNo,existingAcYes,existingAcNo;
     int formNo;
-    SignupTwo(int formNo) {
+    String customer_name ;
+    SignupTwo(int formNo,String name) {
         this.formNo = formNo;
+        this.customer_name = name;
         setLayout(null);
         setTitle("NEW ACCOUNT APPLICATION FORM PAGE 2");
         setBackground(Color.WHITE);
@@ -180,7 +182,7 @@ public class SignupTwo extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        new SignupTwo(25);
+        new SignupTwo(25,"unknown");
     }
     @Override
     public void actionPerformed(ActionEvent e){
@@ -223,8 +225,8 @@ public class SignupTwo extends JFrame implements ActionListener{
             Connect c = new Connect();
             c.s.executeUpdate(query);
             System.out.println("Data Added To SIGNUPTWO Table Successfully !!");
-            new SignupThree(formNo);
             dispose();
+            new SignupThree(formNo,customer_name);
         } catch (Exception error) {
             System.out.print(error);
         }

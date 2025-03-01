@@ -3,6 +3,8 @@ import java.awt.*;
 import java.net.URL;
 // import java.sql.Date;
 import java.sql.*;
+import java.time.LocalTime;
+
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -127,16 +129,18 @@ public class Deposit extends JFrame implements ActionListener {
                         String strBalance = balance.getString("balance");
                         //updating the existing balance to the new 
                         strBalance = ""+(Long.parseLong(strBalance)+Long.parseLong(strAmount));
-                        String query = "INSERT INTO bank VALUES ('"+cardNo+"','Deposit','"+strAmount+"','"+date+"' )";
+                        LocalTime localTime = LocalTime.now();
+                        String time = (""+localTime).substring(0,8);
+                        String query = "INSERT INTO transaction VALUES ('"+cardNo+"','Deposit','"+strAmount+"','"+date+"','"+time+"')";
                         c.s.executeUpdate(query);
 
                         String queryUpdateBal = "UPDATE login SET balance = '"+strBalance+"' WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"'";
                         c.s.executeUpdate(queryUpdateBal);
                         JOptionPane.showMessageDialog(null, "Deposited "+strAmount+" To Your Account Succesfully!");
-                        new Transaction(cardNo, pin);
                         dispose();
+                        new Transaction(cardNo, pin);
                     }else{
-                        JOptionPane.showMessageDialog(null, "Something went wrong!");
+                        JOptionPane.showMessageDialog(null, "User Balance Not found!");
                         return ;
                     }
                 }catch(Exception error){
@@ -146,8 +150,8 @@ public class Deposit extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Pin is incorrect!");
             }
         } else {
-            new Transaction(cardNo, pin);
             dispose();
+            new Transaction(cardNo, pin);
         }
     }
 }

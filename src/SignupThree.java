@@ -12,9 +12,10 @@ public class SignupThree extends JFrame implements ActionListener {
             checkStatement, checkPrivacyPolicy;
     JButton btnCancel,btnSubmit;
     int formNo;
-
-    SignupThree(int formNo) {
+    String customerName;
+    SignupThree(int formNo,String name) {
         this.formNo = formNo;
+        this.customerName = name;
         setLayout(null);
         setTitle("NEW APPLICATION FORM PAGE 1");
         setBackground(Color.WHITE);
@@ -204,14 +205,14 @@ public class SignupThree extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new SignupThree(1966);
+        new SignupThree(1966,"unknown");
     }
 
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnCancel) {
-            new Login();
             dispose();
+            new Login();
             return;
         } else if (event.getSource() == btnSubmit) {
             String strAccountType;
@@ -274,13 +275,13 @@ public class SignupThree extends JFrame implements ActionListener {
                 Connect c = new Connect();
                 c.s.executeUpdate(query);
                 // Query to add the login creadential to the Login table
-                String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"','0')";
+                String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"','0','"+customerName+"')";
                 System.out.println("Data Saved In SIGNUPTHREE Table Succesfully!!");
                 c.s.executeUpdate(loginQuery);
                 System.out.println("Login Credential Saved To LOGIN Table Succesfully!!");
                 JOptionPane.showMessageDialog(null, "Your Card Number: " + strCardNo + "\n" + "PIN Code: " + strPinNo);
-                new Deposit(strCardNo,strPinNo);
                 dispose();
+                new Deposit(strCardNo,strPinNo);
             } catch (Exception error) {
                 System.out.println(error);
             }

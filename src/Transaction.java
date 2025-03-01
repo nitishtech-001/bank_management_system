@@ -147,16 +147,22 @@ public class Transaction extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnExit) {
-            dispose();
+            System.exit(0);
         }else if(e.getSource() == btnDeposite){
+            dispose();
             new Deposit(cardNo,pin);
-            dispose();
         }else if(e.getSource() == btnWithdraw){
+            dispose();
             new Withdraw(cardNo, pin);
-            dispose();
         }else if(e.getSource() == btnFastcash){
-            new FastCash(cardNo, pin);
             dispose();
+            new FastCash(cardNo, pin);
+        }else if(e.getSource() == btnDonation){
+            dispose();
+            new Donation(cardNo, pin);
+        }else if(e.getSource() == btnCardinfo){
+            dispose();
+            new CardInfo(cardNo, pin);
         }
     }
 }
