@@ -163,6 +163,12 @@ public class Transaction extends JFrame implements ActionListener {
         }else if(e.getSource() == btnCardinfo){
             dispose();
             new CardInfo(cardNo, pin);
+        }else if(e.getSource() == btnMiniStatement){
+            dispose();
+            new MiniStatement(cardNo, pin);
+        }else if(e.getSource() == btnTransfer){
+            dispose();
+            new Transfer(cardNo, pin);
         }
     }
 }

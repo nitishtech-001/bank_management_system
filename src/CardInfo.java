@@ -71,7 +71,7 @@ public class CardInfo extends JFrame implements ActionListener {
         textCardno.setBounds(170, 340, 120, 22);
         labelImage.add(textCardno);
 
-        JLabel strCardNumber = new JLabel("  " + cardNo);
+        JLabel strCardNumber = new JLabel("  " + cardNo.substring(0,6)+"XXXXXX"+cardNo.substring(12));
         strCardNumber.setFont(new Font("Raleway", Font.BOLD, 16));
         strCardNumber.setBackground(Color.GRAY);
         strCardNumber.setOpaque(true);

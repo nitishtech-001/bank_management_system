@@ -267,7 +267,7 @@ public class SignupThree extends JFrame implements ActionListener {
             Random random = new Random();
             String strCardNo = "" + Math.abs(random.nextLong() % 900000000L + 4771100000000000L);
 
-            String strPinNo = "" + Math.abs((random.nextLong() % 990000L + 187000L)%1000000L);
+            String strPinNo = "" + Math.abs((random.nextLong() % 790000L + 187000L)%1000000L);
             try {
                 // Query to insert in the database
                 String query = "INSERT INTO signupthree VALUES ('" + formNo + "','" + strAccountType + "','" + strCardNo
