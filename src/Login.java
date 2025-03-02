@@ -37,7 +37,7 @@ class Login extends JFrame implements ActionListener {
         label.setBounds(70, 10, 100, 100);
         add(label);
         // ADDING THE TEXT for the panel
-        JLabel text = new JLabel("WELCOME TO NITISH ATM");
+        JLabel text = new JLabel("WELCOME TO NITISH BANK");
         text.setBounds(190, 40, 500, 50);
         text.setFont(new Font("Osward", Font.BOLD, 34));
         add(text);
