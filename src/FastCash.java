@@ -12,15 +12,15 @@ public class FastCash extends JFrame implements ActionListener {
     JPasswordField inputPin;
     JButton btnRs100, btnRs500, btnRs1000, btnRs2000, btnRs5000, btnRs10000, btnRs15000, btnBack;
     String pin, cardNo;
-
     FastCash(String cardNo, String pin) {
+        System.out.println(pin);
         this.cardNo = cardNo;
         this.pin = pin;
         setLayout(null);
         getContentPane().setBackground(Color.BLACK);
 
         // Adding Image to the frame
-        URL imgIconUrl = getClass().getResource("./images/atm.jpg");
+        URL imgIconUrl = getClass().getResource("/images/atm.jpg");
         ImageIcon imgIcon;
         Image img;
         if (imgIconUrl != null) {

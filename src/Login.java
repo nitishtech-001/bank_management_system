@@ -22,7 +22,7 @@ class Login extends JFrame implements ActionListener {
         // Preventing the default laout
         setLayout(null);
         // ADDING THE BACKGROUND IMAGE
-        URL imgIconUrl = getClass().getResource("./images/logo.jpg");
+        URL imgIconUrl = getClass().getResource("/images/logo.jpg");
         ImageIcon imgIcon;
         Image img;
         if (imgIconUrl != null) {

@@ -1,6 +1,6 @@
-public class App {
+public class Main {
 
-    App(){
+    Main(){
         System.out.println("Back to the App Class");
     }
     public static void main(String[] args) {

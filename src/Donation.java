@@ -20,7 +20,7 @@ public class Donation extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.BLACK);
 
         // Adding Image to the frame
-        URL imgIconUrl = getClass().getResource("./images/atm.jpg");
+        URL imgIconUrl = getClass().getResource("/images/atm.jpg");
         ImageIcon imgIcon;
         Image img;
         if (imgIconUrl != null) {

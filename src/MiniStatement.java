@@ -24,7 +24,7 @@ public class MiniStatement extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.BLACK);
 
         // Title for the ministatement
-        URL imageUrl = getClass().getResource("./images/atm.jpg");
+        URL imageUrl = getClass().getResource("/images/atm.jpg");
         ImageIcon imgIcon;
         Image img;
         if (imageUrl != null) {
@@ -69,7 +69,7 @@ public class MiniStatement extends JFrame implements ActionListener {
 
         JLabel greetName = new JLabel(name);
         greetName.setFont(new Font("System", Font.BOLD, 22));
-        greetName.setForeground(Color.GREEN);
+        greetName.setForeground(Color.BLUE);
         greetName.setBounds(265, 50, 400, 22);
         labelImage.add(greetName);
 
@@ -179,17 +179,17 @@ public class MiniStatement extends JFrame implements ActionListener {
             while (result.next()) {
                 row++;
             }
-            data = new String[row+1][col];
+            data = new String[row + 1][col];
             result = c.s.executeQuery(query);
             for (int i = 0; result.next(); i++) {
-                data[i][0] = "  "+result.getString("type");
-                data[i][1] = "  "+result.getString("amount");
-                data[i][2] = "  "+result.getString("date").toString();
-                data[i][3] = "  "+result.getString("time");
+                data[i][0] = "  " + result.getString("type");
+                data[i][1] = "  " + result.getString("amount");
+                data[i][2] = "  " + result.getString("date").toString();
+                data[i][3] = "  " + result.getString("time");
             }
             showMiniStatement();
         } catch (Exception error) {
-            System.out.println("Error : "+error);
+            System.out.println("Error : " + error);
         }
     }
 }
