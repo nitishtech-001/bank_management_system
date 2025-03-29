@@ -148,15 +148,12 @@ public class MiniStatement extends JFrame implements ActionListener {
         labelImage.add(scrollPane);
     }
 
-    public static void main(String[] args) {
-        new MiniStatement("4771099110179795", "469643");
-    }
 
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnBack) {
             dispose();
-            new Transaction(cardNo, cardNo);
+            new Transaction(cardNo, pin);
             return;
         }
         String strPin = String.valueOf(inputPin.getPassword());

@@ -104,9 +104,6 @@ public class Withdraw extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Withdraw("235689797","1234");
-    }
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnDeposit) {

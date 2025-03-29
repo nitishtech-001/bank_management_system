@@ -188,10 +188,6 @@ public class CardInfo extends JFrame implements ActionListener {
 
     }
 
-    public static void main(String[] args) {
-        new CardInfo("4771099110179795", "469643");
-    }
-
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnPinChange) {
             btnPinChange.setVisible(false);
@@ -214,7 +210,7 @@ public class CardInfo extends JFrame implements ActionListener {
                     Connect c = new Connect();
                     String queryChnagePin = "UPDATE login  SET pin = '" + pin + "' WHERE card_no = '" + cardNo + "'";
                     c.s.executeUpdate(queryChnagePin);
-                    JOptionPane.showMessageDialog(null, "Pin Chnaged Succesfully!");
+                    JOptionPane.showMessageDialog(null, "Pin Changed Succesfully!");
                     dispose();
                     new Transaction(cardNo, pin);
                 } catch (Exception error) {

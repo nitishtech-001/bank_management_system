@@ -198,10 +198,6 @@ public class SignupOne extends JFrame implements ActionListener {
         setResizable(false);
     }
 
-    public static void main(String[] args) {
-        new SignupOne();
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         int formNumber = (int) formNo;

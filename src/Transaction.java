@@ -140,9 +140,6 @@ public class Transaction extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Transaction("4771099438570503", "178919");
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

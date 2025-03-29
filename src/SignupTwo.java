@@ -181,9 +181,7 @@ public class SignupTwo extends JFrame implements ActionListener{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args) {
-        new SignupTwo(25,"unknown");
-    }
+
     @Override
     public void actionPerformed(ActionEvent e){
         String strReligion = (String) selectReligion.getSelectedItem();

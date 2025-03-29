@@ -13,7 +13,6 @@ public class FastCash extends JFrame implements ActionListener {
     JButton btnRs100, btnRs500, btnRs1000, btnRs2000, btnRs5000, btnRs10000, btnRs15000, btnBack;
     String pin, cardNo;
     FastCash(String cardNo, String pin) {
-        System.out.println(pin);
         this.cardNo = cardNo;
         this.pin = pin;
         setLayout(null);
@@ -165,9 +164,6 @@ public class FastCash extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new FastCash("235689797", "1234");
-    }
 
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnBack) {

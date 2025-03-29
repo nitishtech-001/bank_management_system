@@ -117,10 +117,6 @@ public class Transfer extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Transfer("4771099933720814", "19784");
-    }
-
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnBack) {
             dispose();

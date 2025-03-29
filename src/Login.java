@@ -95,10 +95,6 @@ class Login extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new Login();
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -107,7 +103,7 @@ class Login extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Enter the Card Number!");
                 return ;
             }else if(String.valueOf(inputPin.getPassword()).isEmpty()){
-                JOptionPane.showMessageDialog(null, "Ente the password!");
+                JOptionPane.showMessageDialog(null, "Enter the password!");
                 return ;
             }
             // try to login with credentials
@@ -119,8 +115,8 @@ class Login extends JFrame implements ActionListener {
                 ResultSet result = c.s.executeQuery(queryLogin);
                 if(result.next()){
                     JOptionPane.showMessageDialog(null, "Login Succesfull! \n"+"Form number: "+result.getInt("form_no"));
-                    new Transaction(cardNo,pin);
                     dispose();
+                    new Transaction(cardNo,pin);
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong Credentials !!");
                 }
@@ -130,8 +126,8 @@ class Login extends JFrame implements ActionListener {
             }
         }
         else if(e.getSource() == btnSignup) {
-                new SignupOne();
-                dispose();
+            dispose();
+            new SignupOne();
         }else{
             inputCardNo.setText("");
             inputPin.setText("");

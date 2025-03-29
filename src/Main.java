@@ -1,9 +1,10 @@
 public class Main {
 
     Main(){
-        System.out.println("Back to the App Class");
+        System.out.println("App started succesfully!");
     }
     public static void main(String[] args) {
+        new Main();
         new Login();
     }
 }

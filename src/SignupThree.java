@@ -274,7 +274,6 @@ public class SignupThree extends JFrame implements ActionListener {
                         + "','" + strPinNo + "','" + strServiceReq + "')";
                 Connect c = new Connect();
                 c.s.executeUpdate(query);
-                System.out.println("Here is erro");
                 // Query to add the login creadential to the Login table
                 String loginQuery = "INSERT INTO login VALUES ('"+formNo+"','"+strCardNo+"','"+strPinNo+"','0','"+customerName+"')";
                 System.out.println("Data Saved In SIGNUPTHREE Table Succesfully!!");
