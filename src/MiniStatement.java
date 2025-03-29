@@ -57,6 +57,7 @@ public class MiniStatement extends JFrame implements ActionListener {
             } else {
                 System.out.println("User not found");
             }
+            c.disconnect();
         } catch (Exception error) {
             System.out.println("User not found!");
         }
@@ -185,6 +186,7 @@ public class MiniStatement extends JFrame implements ActionListener {
                 data[i][3] = "  " + result.getString("time");
             }
             showMiniStatement();
+            c.disconnect();
         } catch (Exception error) {
             System.out.println("Error : " + error);
         }

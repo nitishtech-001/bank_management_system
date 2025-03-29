@@ -207,6 +207,7 @@ public class Donation extends JFrame implements ActionListener {
                     JOptionPane.showInternalMessageDialog(null, "User Not Found in Database!");
                     return;
                 }
+                c.disconnect();
             } catch (Exception error) {
                 System.out.println(error);
             }

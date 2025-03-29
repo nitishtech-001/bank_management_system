@@ -140,6 +140,7 @@ public class Deposit extends JFrame implements ActionListener {
                         JOptionPane.showMessageDialog(null, "User Balance Not found!");
                         return ;
                     }
+                    c.disconnect();
                 }catch(Exception error){
                     System.out.println(error);
                 }       

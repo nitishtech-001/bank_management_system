@@ -223,6 +223,7 @@ public class SignupTwo extends JFrame implements ActionListener{
             Connect c = new Connect();
             c.s.executeUpdate(query);
             System.out.println("Data Added To SIGNUPTWO Table Successfully !!");
+            c.disconnect();
             dispose();
             new SignupThree(formNo,customer_name);
         } catch (Exception error) {

@@ -201,6 +201,7 @@ public class Transfer extends JFrame implements ActionListener {
                         JOptionPane.showMessageDialog(null, "User does not exist or Some internal error");
                         return;
                     }
+                    c.disconnect();
                     dispose();
                     new Transaction(cardNo, pin);
                 } else {

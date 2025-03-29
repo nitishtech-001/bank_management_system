@@ -120,6 +120,7 @@ class Login extends JFrame implements ActionListener {
                 }else{
                     JOptionPane.showMessageDialog(null, "Wrong Credentials !!");
                 }
+                c.disconnect();
                 result.close();
             }catch(Exception error){
                 System.out.println(error);;

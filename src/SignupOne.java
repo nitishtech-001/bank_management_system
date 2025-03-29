@@ -268,7 +268,7 @@ public class SignupOne extends JFrame implements ActionListener {
 
             c.s.executeUpdate(query);
             System.out.println("Data Addedd To SIGNUP Table Successfully !!!");
-
+            c.disconnect();
             dispose();
             new SignupTwo(formNumber,name);
 

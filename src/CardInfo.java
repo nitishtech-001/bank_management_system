@@ -53,6 +53,7 @@ public class CardInfo extends JFrame implements ActionListener {
             } else {
                 System.out.println("That user does not exist!");
             }
+            c.disconnect();
         } catch (Exception error) {
             System.out.println(error);
             return;

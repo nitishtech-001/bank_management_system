@@ -200,12 +200,17 @@ public class FastCash extends JFrame implements ActionListener {
                     c.s.executeUpdate(queryUpdateBal);
                     JOptionPane.showMessageDialog(null,
                             "FastCash Rs." + strAmount + " From Your Account Succesfully!");
+                    
+                    c.disconnect();
+                    balance.close();
                     dispose();
                     new Transaction(cardNo, pin);
                 }else{
                     JOptionPane.showInternalMessageDialog(null, "User Not Found in Database!");
                     return;
                 }
+                c.disconnect();
+                balance.close();
             } catch (Exception error) {
                 System.out.println(error);
             }

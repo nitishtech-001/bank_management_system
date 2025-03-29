@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class Connect {
-    Connection c;
+    Connection c = null;
     Statement s;
     Connect(){
         try {
@@ -16,6 +16,15 @@ public class Connect {
             //
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+    public void disconnect(){
+        if(c != null){
+            try{
+                c.close();
+            }catch(SQLException error){
+                System.out.println("Error closing Database : "+error.getMessage());
+            }
         }
     }
     

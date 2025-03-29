@@ -280,6 +280,7 @@ public class SignupThree extends JFrame implements ActionListener {
                 c.s.executeUpdate(loginQuery);
                 System.out.println("Login Credential Saved To LOGIN Table Succesfully!!");
                 JOptionPane.showMessageDialog(null, "Your Card Number: " + strCardNo + "\n" + "PIN Code: " + strPinNo);
+                c.disconnect();
                 dispose();
                 new Deposit(strCardNo,strPinNo);
             } catch (Exception error) {

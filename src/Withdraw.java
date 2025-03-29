@@ -135,6 +135,7 @@ public class Withdraw extends JFrame implements ActionListener {
                         String queryUpdateBal = "UPDATE login SET balance = '"+strBalance+"' WHERE card_no = '"+cardNo+"' AND pin = '"+pin+"'";
                         c.s.executeUpdate(queryUpdateBal);
                         JOptionPane.showMessageDialog(null, "Withdraw Rs."+strAmount+" From Your Account Succesfully!");
+                        c.disconnect();
                         dispose();
                         new Transaction(cardNo, pin);
                     }
